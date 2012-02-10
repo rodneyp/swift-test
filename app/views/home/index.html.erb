@@ -3,3 +3,13 @@
 
 <%= @swift_demo_files %>
 
+<br>
+<pre>
+<% require 'pp' %>
+<%= @info.pretty_inspect %>
+</pre>
+
+<br>
+
+<img src="<%="file/"+@swift_demo_files.last%>">
+
