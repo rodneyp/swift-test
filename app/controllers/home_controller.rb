@@ -15,4 +15,22 @@ class HomeController < ApplicationController
     obj = @con.object(@con.objects.first)
     send_data(obj.data, :type => "image/jpeg", :disposition => "inline")
   end
+
+  def upload
+  end
+
+  def upload_post
+    require 'open-uri'
+    data = nil
+    unless /^http:/.match(params[:source])
+      render :inline => "error: must have url source" + "  " + params[:source]
+      return
+    end
+    open(params[:source],"r") do |fh|
+      data = fh.read
+    end
+    obj = @con.create_object(params[:source])
+    obj.write data
+    # redirect to index page after upload
+  end
 end
