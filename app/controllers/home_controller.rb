@@ -36,5 +36,8 @@ class HomeController < ApplicationController
     obj = @con.create_object(params[:source])
     obj.write data
     # redirect to index page after upload
+    
+    n = @con.objects.find_index(params[:source])
+    redirect_to "/index/#{n}"
   end
 end

@@ -16,4 +16,12 @@
 
 <img src="<%="/file/"+CGI::escape(@swift_demo_files[params[:n].to_i]) %>">
 
+<br>
+
+<%= form_tag('/upload_post') do %>
+  <%= label_tag(:source, "Upload") %>:
+  <%= text_field_tag(:source) %>
+  <%= submit_tag "Upload" %>
+<% end %>
+
 <% end %>
