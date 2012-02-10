@@ -50,7 +50,7 @@ Cloudweb::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  match 'file/:path' => 'home#file'
+  match 'file/*path' => 'home#file'
   match 'upload' => 'home#upload'
   match 'upload_post' => 'home#upload_post'
   root :to => 'home#index'

@@ -12,7 +12,11 @@ class HomeController < ApplicationController
 
   def file
     path = params[:path]
-    obj = @con.object(@con.objects.first)
+    unless params[:format].nil?
+      path = path + "." + params[:format]
+    end
+    path = CGI::unescape(path)
+    obj = @con.object(path)
     send_data(obj.data, :type => "image/jpeg", :disposition => "inline")
   end
 

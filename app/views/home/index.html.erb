@@ -1,7 +1,9 @@
 <h1>SWIFT Demo</h1>
 <p>These files are in the "demo" container on swift01, our local sandboxed swift machine</p>
 
-<%= @swift_demo_files %>
+<% @swift_demo_files.each do |f| %>
+<%= link_to f, "file/" + CGI::escape(f) %> <br>
+<% end %>
 
 <br>
 <pre>
