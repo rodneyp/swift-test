@@ -7,7 +7,7 @@ class HomeController < ApplicationController
     @swift_demo_files = @con.objects
   end
   def index 
-    @info = @con.object(@swift_demo_files[params[:n]]).object_metadata unless params[:n].nil? 
+    @info = @con.object(@swift_demo_files[params[:n].to_i]).object_metadata unless params[:n].nil? 
   end
 
   def file

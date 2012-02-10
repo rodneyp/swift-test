@@ -1,8 +1,8 @@
 <h1>SWIFT Demo</h1>
 <p>These files are in the "demo" container on swift01, our local sandboxed swift machine</p>
 
-<% @swift_demo_files.each do |f| %>
-<%= link_to f, "file/" + CGI::escape(f) %> <br>
+<% @swift_demo_files.each_with_index do |f,n| %>
+<%= link_to f, "/index/#{n}"  %> <br>
 <% end %>
 
 <% unless params[:n].nil? %>
@@ -14,6 +14,6 @@
 
 <br>
 
-<img src="<%="file/"+@swift_demo_files.last%>">
+<img src="<%="/file/"+CGI::escape(@swift_demo_files[params[:n].to_i]) %>">
 
 <% end %>
