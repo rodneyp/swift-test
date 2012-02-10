@@ -5,6 +5,7 @@
 <%= link_to f, "file/" + CGI::escape(f) %> <br>
 <% end %>
 
+<% unless params[:n].nil? %>
 <br>
 <pre>
 <% require 'pp' %>
@@ -15,3 +16,4 @@
 
 <img src="<%="file/"+@swift_demo_files.last%>">
 
+<% end %>

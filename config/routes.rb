@@ -53,6 +53,7 @@ Cloudweb::Application.routes.draw do
   match 'file/*path' => 'home#file'
   match 'upload' => 'home#upload'
   match 'upload_post' => 'home#upload_post'
+  match 'index/:n' => 'home#index'
   root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"

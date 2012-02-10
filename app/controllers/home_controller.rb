@@ -6,8 +6,8 @@ class HomeController < ApplicationController
     @con = @cloud.container("demo")
     @swift_demo_files = @con.objects
   end
-  def index
-    @info = @con.object(@swift_demo_files.first).object_metadata
+  def index 
+    @info = @con.object(@swift_demo_files[params[:n]]).object_metadata unless params[:n].nil? 
   end
 
   def file
