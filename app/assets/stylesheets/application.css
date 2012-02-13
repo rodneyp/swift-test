@@ -20,6 +20,8 @@ body {
   text-align: center;
 }
 
+.imagelist { align: center; text-align: left; }
+
 body, p, ol, ul, td {
 	font-family: verdana, "Lucida Grande", arial, helvetica, sans-serif;
 	color: #333;

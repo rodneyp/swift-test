@@ -8,6 +8,7 @@ class HomeController < ApplicationController
   end
   def index 
     @info = @con.object(@swift_demo_files[params[:n].to_i]).object_metadata unless params[:n].nil? 
+    render :layout => "home"
   end
 
   def file
@@ -27,7 +28,7 @@ class HomeController < ApplicationController
     require 'open-uri'
     data = nil
     unless /^http:/.match(params[:source])
-      render :inline => "error: must have url source" + "  " + params[:source]
+      render :inline => "error: must have url source" + "  " + h(params[:source])
       return
     end
     open(params[:source],"r") do |fh|

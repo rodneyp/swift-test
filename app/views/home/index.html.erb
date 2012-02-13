@@ -1,8 +1,9 @@
 <h1>SWIFT Demo</h1>
 <p>These files are in the "demo" container on swift01, our local sandboxed swift machine</p>
 
+<div class="imagelist">
 <% @swift_demo_files.each_with_index do |f,n| %>
-<%= link_to f, "/index/#{n}"  %> <br>
+<%= link_to h(f), "/index/#{n}"  %> <br>
 <% end %>
 
 <% unless params[:n].nil? %>
@@ -13,15 +14,16 @@
 </pre>
 
 <br>
+</div>
 
 <img src="<%="/file/"+CGI::escape(@swift_demo_files[params[:n].to_i]) %>">
 
 <br>
 
+<% end %>
 <%= form_tag('/upload_post') do %>
   <%= label_tag(:source, "Upload") %>:
   <%= text_field_tag(:source) %>
   <%= submit_tag "Upload" %>
 <% end %>
 
-<% end %>
