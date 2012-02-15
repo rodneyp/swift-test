@@ -1,10 +1,22 @@
 <h1>SWIFT Demo</h1>
+<div align=left>
+<%= form_tag('/upload_post') do %>
+  <%= label_tag(:source, "New Image URL") %>:
+  <%= text_field_tag(:source) %>
+  <%= submit_tag "Upload" %>
+<% end %> 
+<br>
+</div>
+
 <p>These files are in the "demo" container on swift01, our local sandboxed swift machine</p>
 
-<div class="imagelist">
+<div class="imagelist-center">
 <% @swift_demo_files.each_with_index do |f,n| %>
-<img src=<%= "/thumb/#{CGI::escape f}" %>>
-<%= link_to h(f), "/index/#{n}"  %> <br>
+<a title="<%= h f %>" href="/index/<%= n%>"> <img src=<%= "/thumb/#{CGI::escape f}"%>>
+</a>
+<% if (n+1) % 5 == 0 %>
+<br>
+<% end %>
 <% end %>
 
 <% unless params[:n].nil? %>
@@ -22,9 +34,3 @@
 <br>
 
 <% end %>
-<%= form_tag('/upload_post') do %>
-  <%= label_tag(:source, "Upload") %>:
-  <%= text_field_tag(:source) %>
-  <%= submit_tag "Upload" %>
-<% end %>
-
