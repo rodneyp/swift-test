@@ -3,6 +3,7 @@
 
 <div class="imagelist">
 <% @swift_demo_files.each_with_index do |f,n| %>
+<img src=<%= "/thumb/#{CGI::escape f}" %>>
 <%= link_to h(f), "/index/#{n}"  %> <br>
 <% end %>
 

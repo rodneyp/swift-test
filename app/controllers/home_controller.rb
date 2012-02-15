@@ -5,10 +5,8 @@ class HomeController < ApplicationController
 	:api_key => "admin", :auth_url => "http://swift01:8080/auth/v1.0")
     @con = @cloud.container("demo")
     @swift_demo_files = @con.objects
-  end
-  def thumbnail_images
     @thumb = @cloud.container("thumb")
-    @thumb.objects
+    @thumb_objects = @thumb.objects
   end
 
   def index 
@@ -17,9 +15,20 @@ class HomeController < ApplicationController
   end
 
   def thumb
-      mm = MiniMagick::Image.from_file(dir + ("logo" + extension))
-      mm.resize("60X60")
-      mm.write(dir + ("logo" + extension))
+    path = params[:path]
+    unless params[:format].nil?
+      path = path + "." + params[:format]
+    end
+    path = CGI::unescape(path)
+    unless @thumb_objects.member? path
+      im = @con.object(path)
+      mm = MiniMagick::Image.from_blob(im.data)
+      mm.resize("120x120")
+      obj = @thumb.create_object(path)
+      obj.write mm.to_blob
+    end 
+    th = @thumb.object(path)
+    send_data(th.data, :type => "image/jpeg", :disposition => "inline")
   end
 
   def file
