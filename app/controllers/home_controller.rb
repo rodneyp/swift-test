@@ -6,9 +6,20 @@ class HomeController < ApplicationController
     @con = @cloud.container("demo")
     @swift_demo_files = @con.objects
   end
+  def thumbnail_images
+    @thumb = @cloud.container("thumb")
+    @thumb.objects
+  end
+
   def index 
     @info = @con.object(@swift_demo_files[params[:n].to_i]).object_metadata unless params[:n].nil? 
     render :layout => "home"
+  end
+
+  def thumb
+      mm = MiniMagick::Image.from_file(dir + ("logo" + extension))
+      mm.resize("60X60")
+      mm.write(dir + ("logo" + extension))
   end
 
   def file
