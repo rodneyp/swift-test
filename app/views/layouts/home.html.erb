@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cloudweb</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<h1>SWIFT Demo</h1>
+<div align=left>
+<%= form_tag('/upload_post') do %>
+  <%= label_tag(:source, "New Image URL") %>:
+  <%= text_field_tag(:source) %>
+  <%= submit_tag "Upload" %>
+<% end %> 
+<br>
+</div>
+
+<p>These files are in the "demo" container on swift01, our local sandboxed swift machine.<p>  The thumbnails are generated on the fly and stored in swift in another container called "thumbs".</p>
+
+<div class="imagelist-center">
+<% @swift_demo_files.each_with_index do |f,n| %>
+<a title="<%= h f %>" href="/index/<%= n%>"> <img src=<%= "/thumb/#{CGI::escape f}"%>>
+</a>
+<% if (n+1) % 5 == 0 %>
+<br>
+<% end %>
+<% end %>
+
+<% unless params[:n].nil? %>
+<br>
+<pre>
+<% require 'pp' %>
+<%= @info.pretty_inspect %>
+</pre>
+
+<br>
+</div>
+
+<img src="<%="/file/"+CGI::escape(@swift_demo_files[params[:n].to_i]) %>">
+
+<br>
+
+<% end %>
+</body>
+</html>
+

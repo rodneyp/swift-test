@@ -2,7 +2,7 @@
 class HomeController < ApplicationController
   def initialize
     url = "http://swift01:8080/auth/v1.0"
-    url = "http://10.42.0.47:8080/auth/v1.0"
+    url = "https://10.42.0.47:8080/auth/v1.0"
     @cloud = CloudFiles::Connection.new(:username => "admin:admin",
 	:api_key => "admin", :auth_url => url)
     @con = @cloud.container("demo")
