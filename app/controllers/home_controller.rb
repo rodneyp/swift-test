@@ -5,6 +5,7 @@ class HomeController < ApplicationController
     url = "https://10.42.0.47:8080/auth/v1.0"
     @cloud = CloudFiles::Connection.new(:username => "admin:admin",
 	:api_key => "admin", :auth_url => url)
+    @cloud.storagehost = "10.42.0.47"
     @con = @cloud.container("demo")
     @swift_demo_files = @con.objects
     @thumb = @cloud.container("thumb")
