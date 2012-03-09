@@ -1,0 +1,17 @@
+cloudweb (0.3) oneiric; urgency=low
+
+  * git sync
+
+ -- Rodney Peck <rpeck@swift03>  Fri, 09 Mar 2012 15:01:21 -0800
+
+cloudweb (0.2) oneiric; urgency=low
+
+  * catch up recent code improvements
+
+ -- Rodney Peck <rpeck@swift03>  Fri, 09 Mar 2012 14:02:30 -0800
+
+cloudweb (0.1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Rodney Peck <rpeck@unknown>  Wed, 07 Mar 2012 14:01:51 -0800

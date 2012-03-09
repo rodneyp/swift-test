@@ -1,0 +1,15 @@
+Source: cloudweb
+Section: devel
+Priority: extra
+Maintainer: Rodney Peck <rpeck@book.com>
+Build-Depends: debhelper (>= 8.0.0), libsqlite3-dev
+Standards-Version: 3.9.2
+#Homepage: <insert the upstream URL, if relevant>
+#Vcs-Git: git://git.debian.org/collab-maint/cloudweb.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/cloudweb.git;a=summary
+
+Package: cloudweb
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, thin, libsqlite3-dev, nodejs, imagemagick, rubygems, ruby
+Description: simple rails app to test and demo swift
+ app to post, fetch and view photos on swift test system
